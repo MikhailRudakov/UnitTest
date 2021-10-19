@@ -28,7 +28,7 @@ class Program
         {
             Console.WriteLine("Блок finally");
         }
-        Cnsole.WriteLine("Конец программы");
+        Console.WriteLine("Конец программы");
         Console.Read();
     }
 }
