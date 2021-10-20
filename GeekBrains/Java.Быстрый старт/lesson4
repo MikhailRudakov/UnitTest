@@ -1,0 +1,29 @@
+package ugresha.GAGARA;
+
+import java.util.Scanner;
+
+public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+        System.out.println("Ваша задача угадать число");
+        int range = 40;
+        int number = (int)(Math.random()*range);
+        PlayGame(range,number);
+        scanner.close();
+    }
+    private static void PlayGame(int range, int number){
+        while (true){
+            System.out.println("Угадайте число от 0 до " + range);
+            int input_numb = scanner.nextInt();
+            if (input_numb == number){
+                System.out.println("Вы угадали число");
+                break;
+            } else if (input_numb > number){
+                System.out.println("Загаданное число меньше");
+            } else {
+                System.out.println("Загаданное число больше");
+            }
+
+        }
+    }
+}
