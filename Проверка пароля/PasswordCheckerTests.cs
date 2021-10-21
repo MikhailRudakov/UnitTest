@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ClassLibraryPassword;
 using System;
 using System.Collections.Generic;
@@ -12,154 +12,114 @@ namespace ClassLibraryPassword.Tests
     public class PasswordCheckerTests
     {
         [TestMethod()]
-        public void Check_12Symbols_ReturnsTrue()
+        public void Check_8Symbols_ReturnsTrue()
         {
-            string password = "21121994eeee";
+            // Arrange
+            string password = "Glist_zabivnoi2004";
             bool expected = true;
-
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
+            // Assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod()]
-        public void Check_8Symbols_ReturnsFalse()
+        public void Check_4Symbols_ReturnsFalse()
         {
-            string password = "2112199";
+            // Arrange
+            string password = "Put";
             bool expected = false;
-
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
+            // Assert
             Assert.IsFalse(actual);
         }
         [TestMethod()]
-        public void Check_20Symbols_ReturnsFalse()
+        public void Check_8Numbers_ReturnsTrue()
         {
-            string password = "21121994573164597834f";
-            bool expected = false;
-
-            bool actual = PasswordChecker.validatePassword(password);
-            Assert.IsFalse(actual);
-        }
-        [TestMethod()]
-        public void Check_20Symbols_ReturnsTrue()
-        {
-            string password = "123456789qwertyuiopa";
+            // Arrange
+            string password = "12345678aBc()";
             bool expected = true;
-
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
+            // Assert
             Assert.AreEqual(expected, actual);
-             
-
         }
         [TestMethod()]
-        public void Check_numbersSymbols_ReturnsTrue()
+        public void Check_4Numbers_ReturnsFalse()
         {
-            string password = "123456789";
-            bool expected = true;
-
+            // Arrange
+            string password = "Odin";
+            bool expected = false;
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
+            // Assert
+            Assert.IsFalse(actual);
+        }
+        [TestMethod()]
+        public void Check_8SpecialSymbols_ReturnsTrue()
+        {
+            // Arrange
+            string password = "Donba$$$";
+            bool expected = true;
+            // Act
+            bool actual = PasswordChecker.validatePassword(password);
+            // Assert
             Assert.AreEqual(expected, actual);
-
         }
-
         [TestMethod()]
-        public void Check_numbersSymbols_ReturnsFalse()
+        public void Check_4SpecialSymbols_ReturnsFalse()
         {
-            string password = "Qwertyuiop";
+            // Arrange
+            string password = "qwert$$$$";
             bool expected = false;
-
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
-            Assert.IsFalse (actual);
-
-        }
-
-
-        [TestMethod()]
-        public void Check_SpecSymbols_ReturnsTrue()
-        {
-            string password = "qwertyu@";
-            bool expected = true;
-
-            bool actual = PasswordChecker.validatePassword(password);
-            Assert.AreEqual(expected,actual);
-
-        }
-
-
-        [TestMethod()]
-        public void Check_SpecSymbols_ReturnsFalse()
-        {
-            string password = "Hhjsadasdasd";
-            bool expected = false;
-
-            bool actual = PasswordChecker.validatePassword(password);
-            Assert.IsFalse (actual);
-
-        }
-
-        [TestMethod()]
-        public void Check_CapsSymbols_ReturnsTrue()
-        {
-            string password = "AsfhjfsdkjKjhfs1@";
-            bool expected = true;
-
-            bool actual = PasswordChecker.validatePassword(password);
-            Assert.AreEqual(expected,actual);
-
-        }
-
-        [TestMethod()]
-        public void Check_CapsSymbols_ReturnsFalse()
-        {
-            string password = "1280848149845»8320:";
-            bool expected = false;
-
-            bool actual = PasswordChecker.validatePassword(password);
+            // Assert
             Assert.IsFalse(actual);
-
         }
-
         [TestMethod()]
-        public void Check_UPSymbols_ReturnsTrue()
+        public void Check_8Uppercase_ReturnsTrue()
         {
-            string password = "ASA@1987DFE:";
+            // Arrange
+            string password = "Sueta2007";
             bool expected = true;
-
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
-            Assert.AreEqual(expected,actual);
-
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
-
         [TestMethod()]
-        public void Check_UPSymbols_ReturnsFalse()
+        public void Check_4Uppercase_ReturnsFalse()
         {
-            string password = "dejh#93875jsapo";
+            // Arrange
+            string password = "asswecan";
             bool expected = false;
-
+            // Act
             bool actual = PasswordChecker.validatePassword(password);
+            // Assert
             Assert.IsFalse(actual);
-
         }
-        public class PasswordChecker
+        [TestMethod()]
+        public void Check_8Lowercase_ReturnsTrue()
         {
-            public static bool validatePassword (string password)
-            {
-                if (password.Length < 8 || password.Length > 20)
-                        return false;
-                if (!password.Any(char.IsLower))
-                    return false;
-                if (!password.Any(char.IsUpper))
-                    return false;
-                if (!password.Any(char.IsDigit))
-                    return false;
-                if (password.Intersect ("!@#$%^&*()").Count() == 0)
-                    return false;
-
-                return true;
-
-
-            }
-
-
-
+            // Arrange
+            string password = "qazWER!@43";
+            bool expected = true;
+            // Act
+            bool actual = PasswordChecker.validatePassword(password);
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod()]
+        public void Check_4Lowercase_ReturnsFalse()
+        {
+            // Arrange
+            string password = "DUNGEON_MASTER";
+            bool expected = false;
+            // Act
+            bool actual = PasswordChecker.validatePassword(password);
+            // Assert
+            Assert.IsFalse(actual);
         }
     }
- } 
+}
