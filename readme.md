@@ -1,2 +1,2 @@
-Rudakov Mikhail 195 group
+Nikita Gromov 195 group
 
