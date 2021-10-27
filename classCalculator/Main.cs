@@ -27,30 +27,28 @@ namespace calculator
             }
             if (oper == "/")
             {
-                if (b == 0.0D)
-                {
-                    throw new DivideByZeroException();
-
-
-                }
-                return (a / b);
+                
+                
                 try
                 {
 
 
                     if (b == 0)
                     {
-                        Console.WriteLine("Вы не можете делить на ноль ");
+                        throw new DivideByZeroException();
 
-                        return 1;
+                        
                     }
                     else
-                        Console.WriteLine("Результат :" + " " + a / b);
+                    { Console.WriteLine("Результат :" + " " + a / b);
+                        return (a / b); }
+                       
 
                 }
-                catch
+                catch (DivideByZeroException e )
                 {
-                    Console.WriteLine("Неправильный ввод");
+                    Console.WriteLine($"Oshibka: {e.Message}");
+                    return 1;
                 }
 
 
@@ -69,7 +67,7 @@ namespace calculator
             a = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите число 2");
             b = Convert.ToDouble(Console.ReadLine());
-            double res = CalculatorChecker.ValidateCalculator(a, b, "*");
+            double res = CalculatorChecker.ValidateCalculator(a, b, "/");
             Console.WriteLine("res" + res);
         }
 
